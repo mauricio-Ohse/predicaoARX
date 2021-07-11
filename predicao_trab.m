@@ -165,13 +165,25 @@ H_est_bj=tf(best_model_bj.C,best_model_bj.D,1,'Variable','z^-1');
 y_estimado=lsim(G_est_arx,data(:,1));
 y_estimadobj=lsim(G_est_bj,data(:,1));
 figure
-plot(y_estimado)
+plot(y_estimado,'LineWidth',2,'Color','b')
 hold on
-plot(data(:,2))
-plot(y_estimadobj)
+plot(y_estimadobj,'LineWidth',2,'Color','r')
+plot(data(:,2),'LineWidth',2,'Color','g')
+title('Comparação entre dados originais e simulação com G(u)')
+xlim([0 200])
 grid
 
-legend('y estimado','data set','y estimado bj')
+figure
+plot(y_estimado,'LineWidth',2,'Color','b')
+hold on
+plot(y_estimadobj,'LineWidth',2,'Color','r')
+plot(data(:,2),'LineWidth',2,'Color','g')
+title('Zoom comparação entre dados originais e simulação com G(u)')
+xlim([0 100])
+ylim([3 5.5])
+grid
+
+legend('y estimado ARX','y estimado ARIMA','data set')
 
 
 %% Elipse de intervalo de confiança para parametros ARX  
